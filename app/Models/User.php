@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -33,10 +35,14 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array<string, string>
      */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
     protected function casts(): array
     {
         return [
@@ -44,4 +50,32 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Define the created event listener
+        static::created(function ($model) {
+            // Perform your function or action here
+            // You can access the model's attributes using $model->attribute_name
+            if($model->role == "super_user"){
+                Hotel::create(['user_id' => $model->id]);
+            }
+
+        });
+    }
+
+    public function hotel()
+    {
+        return $this->belongsTo('App\Models\Hotel');
+    }
+    public function hotels()
+    {
+        return $this->hasMany('App\Models\Hotel');
+    }
+    public function userAccount(){
+        return $this->hasOne('App\Models\User', 'user_account_id');
+    }
+
 }

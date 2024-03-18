@@ -18,11 +18,21 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
+        'phone',
+        'photo',
+        'address',
+        'role',
+        'user_account_id',
+        'hotel_id',
         'password',
     ];
     protected $guarded = [];
+
+    protected $appends = ['full_name'];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -76,6 +86,11 @@ class User extends Authenticatable
     }
     public function userAccount(){
         return $this->hasOne('App\Models\User', 'user_account_id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 
 }

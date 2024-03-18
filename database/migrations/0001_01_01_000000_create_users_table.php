@@ -29,7 +29,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table){
-            $table->foreignId('user_account_id')->nullable()->references('id')->on('users');
+            $table->foreignId(' ')->nullable()->references('id')->on('users');
             $table->timestamps();
         });
 

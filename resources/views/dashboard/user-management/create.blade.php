@@ -28,7 +28,7 @@
                         @include('notifications.flash-messages')
                         <h5 class="mb-4">Create New User</h5>
                         <form action="{{ route('dashboard.users.store') }}" method="POST" class="row g-3">
-                            @csrf
+                            @csrf 
 
                             <input type="hidden" name="user_account_id" value="{{Auth::user()->id}}">
                             <div class="col-md-6">

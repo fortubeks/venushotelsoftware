@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();
             $table->text('address')->nullable();
-            $table->enum('role',['super_admin', 'super_user', 'accountant', 'front_desk'])-> default(('super_user'));
+            $table->string('role')-> default(('super_user'));
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('hotel_id')->nullable();
             $table->rememberToken();
@@ -29,7 +29,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table){
-            $table->foreignId(' ')->nullable()->references('id')->on('users');
+            $table->foreignId('user_account_id')->nullable()->references('id')->on('users');
             $table->timestamps();
         });
 

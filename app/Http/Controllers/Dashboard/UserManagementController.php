@@ -60,9 +60,11 @@ class UserManagementController extends Controller
      */
     public function edit(string $id)
     {
+        $roles = AppConstants::ROLE_OPTIONS;
         $user = User::findOrFail($id);
         return view('dashboard.user-management.edit', [
             'user' => $user,
+            'roles' => $roles,
         ]);
     }
 
@@ -71,6 +73,7 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //  dd($request->all());
         try {
             (new RegistrationService)->updateUser($request, $id);
             return redirect()->route('dashboard.users.index')->with('success_message', 'User Updated Successfully');

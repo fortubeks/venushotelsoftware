@@ -23,6 +23,10 @@ class User extends Authenticatable
         'email',
         'phone',
         'photo',
+        'address',
+        'role',
+        'user_account_id',
+        'hotel_id',
         'password',
     ];
     protected $guarded = [];

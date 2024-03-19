@@ -40,7 +40,7 @@ class UserManagementController extends Controller
     {
         // dd($request->all());
         try {
-            (new RegistrationService)->createUser($request);
+            (new RegistrationService)->createUser($request,);
             return redirect()->route('dashboard.users.index')->with('success_message', 'User Created Successfully');
         } catch (Exception $e) {
             return redirect()->back()->with('error_message', 'An error occurred while creating the user.' . $e->getMessage());
@@ -87,6 +87,14 @@ class UserManagementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return back()->with('success_message', 'User deleted successfully');
+    }
+
+    public function loginDetails($user)
+    {
+        (new RegistrationService)->sendLoginDetails($user);
+        return redirect()->route('dashboard.users.index')->with('success_message', 'Login details sent successfully.');
     }
 }

@@ -26,7 +26,7 @@ class User extends Authenticatable
         'address',
         'role',
         'user_account_id',
-        'hotel_id',
+        // 'hotel_id',
         'password',
     ];
     protected $guarded = [];

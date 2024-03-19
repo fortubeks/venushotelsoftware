@@ -23,7 +23,6 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->string('role')-> default(('super_user'));
             $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->foreignId('hotel_id')->nullable();
             $table->rememberToken();
             $table->softDeletes();
         });

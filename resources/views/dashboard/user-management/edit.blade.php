@@ -30,7 +30,7 @@
                         <form action="{{ route('dashboard.users.update', $user->id) }}" method="POST" class="row g-3">
                             @csrf @method('PUT')
 
-                            <input type="hidden" name="user_account_id" value="{{Auth::user()->id}}">
+                           
                             <div class="col-md-6">
                                 <label for="input1" class="form-label">First Name</label>
                                 <input type="text" name="first_name" required value="{{ old('first_name', $user->first_name) }}"

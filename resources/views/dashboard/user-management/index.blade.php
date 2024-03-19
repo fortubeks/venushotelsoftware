@@ -29,7 +29,8 @@
 
         <div class="card">
             <div class="card-body">
-                <div class="table-responsive">
+                @include('notifications.flash-messages')
+                <div class="table-responsive" >
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -37,7 +38,7 @@
                                 <th>Name</th>
                                 <th>Photo</th>
                                 <th>email</th>
-                                <th>Phone</th>
+                                {{-- <th>Phone</th> --}}
                                 <th>Created Date</th>
                                 <th>Action</th>
                             </tr>
@@ -58,13 +59,13 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phone }}</td>
+                                    {{-- <td>{{ $user->phone }}</td> --}}
                                     <td>{{ $user->created_at->format('D M, Y') }}</td>
                                     <td>
-                                        <div class="d-flex justify-content-between ">
+                                        <div class="d-flex justify-content-space ">
                                             <a href="{{ route('dashboard.users.edit', $user->id) }}"
                                                 class="btn btn-primary">Edit</a>
-                                            <form action="" method="post">
+                                            <form action="{{ route('dashboard.send-user-login-details', ['userId' => $user->id]) }}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-dark">Resend Login
                                                     Details</button>

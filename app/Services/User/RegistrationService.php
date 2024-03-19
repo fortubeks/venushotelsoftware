@@ -23,11 +23,7 @@ class RegistrationService
         $rules = [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($id),
-            ],
+            'email' => 'required|email|unique:users,email',
             'role' => 'required',
             'phone' => 'nullable|string|max:20',
             'photo' => 'nullable|max:2048',
@@ -45,12 +41,12 @@ class RegistrationService
 
 
 
-    public function createUser()
+    public function createUser($id)
     {
         $request = request();
 
         // Validate the incoming form data
-        $validatedData = $this->validateUser($request, null);
+         $this->validateUser($request,$id);
 
         $photoPath = null;
         if ($request->hasFile('photo')) {
@@ -86,7 +82,7 @@ class RegistrationService
     public function updateUser($id)
     {
         $request = request();
-        $data = $this->validateUser($request, $id);
+       $this->validateUser($request, $id);
 
         $user = User::findOrFail($id);
 
@@ -94,12 +90,12 @@ class RegistrationService
             $photoDirectory = 'users/photos/';
             Storage::disk('public')->makeDirectory($photoDirectory);
             $photoPath = FileHelpers::saveImageRequest(request()->file('photo'), $photoDirectory);
-            $data['photo'] = $photoPath;
+            $request['photo'] = $photoPath;
         } else {
             // If no new photo is uploaded, retain the existing photo path
-            $data['photo'] = $user->photo;
+            $request['photo'] = $user->photo;
         }
-
+dd($request->all());
         if ($request->input('email') !== $user->email) {
             $user->email = $request->input('email');
         }

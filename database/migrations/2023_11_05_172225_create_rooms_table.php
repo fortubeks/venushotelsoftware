@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('hotel_id');
-            $table->foreignId('room_category_id');
+            $table->foreignId('hotel_id')->constrained('hotels');
+            $table->foreignId('room_category_id')->constrained('rooms');
             $table->string('name');
             $table->double('rate');
             $table->double('discounted_rate')->nullable();

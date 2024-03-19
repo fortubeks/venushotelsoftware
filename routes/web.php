@@ -13,6 +13,8 @@ Route::prefix('dashboard')->as('dashboard.')->middleware(['auth', 'verified'])->
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('users', UserManagementController::class);
+    Route::post('/send-user-login-details/{userId}', [UserManagementController::class, 'loginDetails'])->name('send-user-login-details');
+
     
 });
 

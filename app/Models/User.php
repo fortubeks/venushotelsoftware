@@ -26,7 +26,7 @@ class User extends Authenticatable
         'address',
         'role',
         'user_account_id',
-        // 'hotel_id',
+        'hotel_id',
         'password',
     ];
     protected $guarded = [];
@@ -69,8 +69,10 @@ class User extends Authenticatable
         static::created(function ($model) {
             // Perform your function or action here
             // You can access the model's attributes using $model->attribute_name
-            if($model->role == "super_user"){
-                Hotel::create(['user_id' => $model->id]);
+            if($model->role == "Super_User"){
+               $hotel = Hotel::create(['user_id' => $model->id]);
+               $model->hotel_id = $hotel->id;
+               $model->save();
             }
 
         });
@@ -86,6 +88,9 @@ class User extends Authenticatable
     }
     public function userAccount(){
         return $this->hasOne('App\Models\User', 'user_account_id');
+    }
+    public function users(){
+        return $this->hasMany('App\Models\User', 'user_account_id');
     }
 
     public function getFullNameAttribute()

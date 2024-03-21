@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\Hotel\Room\RoomCategoryController;
+use App\Http\Controllers\Dashboard\Hotel\Room\RoomController;
 use App\Http\Controllers\Dashboard\UserManagementController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -12,10 +14,14 @@ Route::get('/', function () {
 Route::prefix('dashboard')->as('dashboard.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
 
-    Route::resource('users', UserManagementController::class);
-    Route::post('/send-user-login-details/{userId}', [UserManagementController::class, 'loginDetails'])->name('send-user-login-details');
-
     
+    Route::prefix('hotel')->as('hotel.')->group(function () {
+        Route::resource('users', UserManagementController::class);
+        Route::resource('room', RoomController::class);
+        Route::resource('room-category', RoomCategoryController::class);
+    });
+
+    Route::post('/send-user-login-details/{userId}', [UserManagementController::class, 'loginDetails'])->name('send-user-login-details');
 });
 
 
@@ -25,4 +31,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

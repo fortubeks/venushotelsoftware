@@ -42,37 +42,38 @@ class AppConstants
 
     // Users role
 
-    const SUPER_ADMIN = 'Super Admin';
-    const SUPER_USER = 'Super User';
-    const ACCOUNT = 'Account';
-    const SALES_POINT = 'Sales Point';
-    const STORE = 'Store';
-    const RESERVATION_AGENT = 'Reservation Agent';
-    const GUEST_RELATIONS_MANAGER = 'Guest Relations Manager';
-    const BANQUET_MANAGER = 'Banquet Manager';
-    const SPA_MANAGER = 'Spa Manager';
-    const REVENUE_MANAGER = 'Revenue Manager';
-    const IT_MANAGER = 'IT Manager';
-    const QUALITY_ASSURANCE_MANAGER = 'Quality Assurance Manager';
-    const TRAINING_MANAGER = 'Training Manager';
-    const ENVIRONMENTAL_MANAGER = 'Environmental Manager';
-    const ENTERTAINMENT_COORDINATOR = 'Entertainment Coordinator';
-
-    const ROLE_OPTIONS = [
-        self::SUPER_ADMIN => 'Super Admin',
-        self::SUPER_USER => 'Super User',
-        self::ACCOUNT => 'Account',
-        self::SALES_POINT => 'Sales Point',
-        self::STORE => 'Store',
-        self::RESERVATION_AGENT => 'Reservation Agent',
-        self::GUEST_RELATIONS_MANAGER => 'Guest Relations Manager',
-        self::BANQUET_MANAGER => 'Banquet Manager',
-        self::SPA_MANAGER => 'Spa Manager',
-        self::REVENUE_MANAGER => 'Revenue Manager',
-        self::IT_MANAGER => 'IT Manager',
-        self::QUALITY_ASSURANCE_MANAGER =>'Quality Assurance Manager',
-        self::TRAINING_MANAGER => 'Training Manager',
-        self::ENVIRONMENTAL_MANAGER => 'Environmental Manager',
-        self::ENTERTAINMENT_COORDINATOR => 'Entertainment Coordinator',
-    ];
+        const SUPER_ADMIN = 'Super_Admin';
+        const SUPER_USER = 'Super_User';
+        const ACCOUNT = 'Account';
+        const SALES_POINT = 'Sales_Point';
+        const STORE = 'Store';
+        const RESERVATION_AGENT = 'Reservation_Agent';
+        const GUEST_RELATIONS_MANAGER = 'Guest_Relations_Manager';
+        const BANQUET_MANAGER = 'Banquet_Manager';
+        const SPA_MANAGER = 'Spa_Manager';
+        const REVENUE_MANAGER = 'Revenue_Manager';
+        const IT_MANAGER = 'IT_Manager';
+        const QUALITY_ASSURANCE_MANAGER = 'Quality_Assurance_Manager';
+        const TRAINING_MANAGER = 'Training_Manager';
+        const ENVIRONMENTAL_MANAGER = 'Environmental_Manager';
+        const ENTERTAINMENT_COORDINATOR = 'Entertainment_Coordinator';
+        
+        const ROLE_OPTIONS = [
+            self::SUPER_ADMIN => self::SUPER_ADMIN,
+            self::SUPER_USER => self::SUPER_USER,
+            self::ACCOUNT => self::ACCOUNT,
+            self::SALES_POINT => self::SALES_POINT,
+            self::STORE => self::STORE,
+            self::RESERVATION_AGENT => self::RESERVATION_AGENT,
+            self::GUEST_RELATIONS_MANAGER => self::GUEST_RELATIONS_MANAGER,
+            self::BANQUET_MANAGER => self::BANQUET_MANAGER,
+            self::SPA_MANAGER => self::SPA_MANAGER,
+            self::REVENUE_MANAGER => self::REVENUE_MANAGER,
+            self::IT_MANAGER => self::IT_MANAGER,
+            self::QUALITY_ASSURANCE_MANAGER => self::QUALITY_ASSURANCE_MANAGER,
+            self::TRAINING_MANAGER => self::TRAINING_MANAGER,
+            self::ENVIRONMENTAL_MANAGER => self::ENVIRONMENTAL_MANAGER,
+            self::ENTERTAINMENT_COORDINATOR => self::ENTERTAINMENT_COORDINATOR,
+        ];
+      
 }

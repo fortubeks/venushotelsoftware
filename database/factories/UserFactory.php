@@ -35,6 +35,7 @@ class UserFactory extends Factory
             'photo' => fake()->image(),
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
+            'hotel_id' => 1,
             'status' => 'active',
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

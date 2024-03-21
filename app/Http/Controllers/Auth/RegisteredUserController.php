@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Constants\AppConstants;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -44,6 +45,7 @@ class RegisteredUserController extends Controller
             'first_name' => $firstName,
             'last_name' => $lastName,
             'email' => $request['email'],
+            'role' => AppConstants::SUPER_USER,
             'password' => Hash::make($request->password),
         ]);
         event(new Registered($user));

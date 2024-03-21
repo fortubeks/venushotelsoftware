@@ -18,19 +18,18 @@ use Illuminate\Validation\Rule;
 class RegistrationService
 {
 
-    public function validateUser(Request $request, $id)
+    public function validateUser(array $request, $id)
     {
-        $rules = [
+        $user = User::findOrFail($id);
+        $validator = Validator::make($request, [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'role' => 'required',
             'phone' => 'nullable|string|max:20',
             'photo' => 'nullable|max:2048',
             'address' => 'nullable|string|max:255',
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
+        ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -45,19 +44,21 @@ class RegistrationService
     {
         $request = request();
 
+        // Extract data from the request object
+        $requestData = $request->all();
+    
         // Validate the incoming form data
-         $this->validateUser($request,$id);
+        $data = $this->validateUser($requestData);
 
         $photoPath = null;
-        if ($request->hasFile('photo')) {
+        if (!empty($photo = $data['image'] ?? null)) {
             $photoDirectory = 'users/photos/';
             Storage::disk('public')->makeDirectory($photoDirectory);
-            $photoPath = FileHelpers::saveImageRequest($request->file('photo'), $photoDirectory);
+            $photoPath = FileHelpers::saveImageRequest($photo, $photoDirectory);
         }
-
         // Generate a random password
         $randomPassword = Str::random(12);
-
+        $user = Auth::user()->hotel->id;
         // Create the user with form data
         $user = User::create([
             'first_name' => $request->input('first_name'),
@@ -68,7 +69,8 @@ class RegistrationService
             'address' => $request->input('address'),
             'role' => $request->input('role'),
             'password' => Hash::make($randomPassword),
-            'user_account_id' => Auth::user()->id,
+            'user_account_id' => $user,
+            'hotel_id' => $user
         ]);
 
         // Send login details
@@ -82,7 +84,7 @@ class RegistrationService
     public function updateUser($id)
     {
         $request = request();
-       $this->validateUser($request, $id);
+        $this->validateUser($request, $id);
 
         $user = User::findOrFail($id);
 
@@ -95,7 +97,7 @@ class RegistrationService
             // If no new photo is uploaded, retain the existing photo path
             $request['photo'] = $user->photo;
         }
-dd($request->all());
+        dd($request->all());
         if ($request->input('email') !== $user->email) {
             $user->email = $request->input('email');
         }
@@ -118,19 +120,18 @@ dd($request->all());
     {
         try {
             $user = User::findOrFail($userId);
-    
+
             $randomPassword = Str::random(12);
-    
+
             $user->password = Hash::make($randomPassword);
             $user->save();
-    
+
             Mail::to($user->email)->send(new SendUserLoginDetailsMail($user, $randomPassword));
-    
+
             return $user->toArray();
         } catch (Exception $e) {
             // Handle the exception as per your requirement
             return ['error_message' => 'An error occurred while updating the user.'];
         }
     }
-    
 }

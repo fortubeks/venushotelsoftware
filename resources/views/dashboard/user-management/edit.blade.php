@@ -8,7 +8,7 @@
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard.users.index') }}"><i
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard.hotel.users.index') }}"><i
                                     class="bx bx-home-alt"></i></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Edit</li>
@@ -27,7 +27,7 @@
                     <div class="card-body p-4">
                         @include('notifications.flash-messages')
                         <h5 class="mb-4">Create New User</h5>
-                        <form action="{{ route('dashboard.users.update', $user->id) }}" method="POST" class="row g-3">
+                        <form action="{{ route('dashboard.hotel.users.update', $user->id) }}" method="POST" class="row g-3">
                             @csrf @method('PUT')
 
                            
@@ -104,9 +104,6 @@
                         @enderror
                     </div>
                     
-                    
-                    
-
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
                         <label for="input4" class="form-label">Address</label>
                         <input type="text" name="address" value="{{ old('address', $user->address) }}"
@@ -117,6 +114,7 @@
                             </span>
                         @enderror
                     </div>
+                   
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 pt-3">
                         <button class="btn btn-primary">Save</button>
                     </div>

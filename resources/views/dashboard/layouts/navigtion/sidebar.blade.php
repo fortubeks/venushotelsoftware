@@ -34,9 +34,22 @@
                 <div class="menu-title">User Management</div>
             </a>
             <ul>
-                <li> <a href="{{route('dashboard.users.create')}}"><i class='bx bx-radio-circle'></i>Create</a>
+                <li> <a href="{{route('dashboard.hotel.users.index')}}"><i class='bx bx-radio-circle'></i>Create</a>
                 </li>
-                <li> <a href="{{route('dashboard.users.index')}}"><i class='bx bx-radio-circle'></i>View</a>
+                <li> <a href="{{route('dashboard.hotel.users.index')}}"><i class='bx bx-radio-circle'></i>View</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Room Management</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('dashboard.hotel.room.index')}}"><i class='bx bx-radio-circle'></i>Rooms</a>
+                </li>
+                <li> <a href="{{route('dashboard.hotel.room-category.index')}}"><i class='bx bx-radio-circle'></i>Category</a>
                 </li>
             </ul>
         </li>

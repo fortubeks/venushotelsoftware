@@ -5,6 +5,12 @@
         width: 40px;
         height: auto;
     }
+    .scrollable-table-container {
+    overflow-x: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
 </style>
 
 @section('contents')
@@ -22,7 +28,7 @@
                 </nav>
             </div>
             <div class="ms-auto">
-                <a href="{{route('dashboard.users.create')}}" class="btn btn-dark">Add New</a>
+                <a href="{{route('dashboard.hotel.users.create')}}" class="btn btn-dark">Add New</a>
             </div>
         </div>
         <!--end breadcrumb-->
@@ -30,7 +36,7 @@
         <div class="card">
             <div class="card-body">
                 @include('notifications.flash-messages')
-                <div class="table-responsive" >
+                <div class="table-responsive scrollable-table-container">
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -38,7 +44,7 @@
                                 <th>Name</th>
                                 <th>Photo</th>
                                 <th>email</th>
-                                {{-- <th>Phone</th> --}}
+                                <th>Role</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
                             </tr>
@@ -59,18 +65,18 @@
                                         @endif
                                     </td>
                                     <td>{{ $user->email }}</td>
-                                    {{-- <td>{{ $user->phone }}</td> --}}
+                                    <td>{{ $user->role }}</td>
                                     <td>{{ $user->created_at->format('D M, Y') }}</td>
                                     <td>
                                         <div class="d-flex justify-content-space ">
-                                            <a href="{{ route('dashboard.users.edit', $user->id) }}"
-                                                class="btn btn-primary">Edit</a>
-                                            <form action="{{ route('dashboard.send-user-login-details', ['userId' => $user->id]) }}" method="post">
+                                            <a href="{{ route('dashboard.hotel.users.edit', $user->id) }}"
+                                                class="btn bt-sm btn-primary">Edit</a>
+                                            {{-- <form action="{{ route('dashboard.send-user-login-details', ['userId' => $user->id]) }}" method="post">
                                                 @csrf
                                                 <button type="submit" class="btn btn-dark">Resend Login
                                                     Details</button>
-                                            </form>
-                                            <form action="{{ route('dashboard.users.destroy', $user->id) }}" method="POST"
+                                            </form> --}}
+                                            <form action="{{ route('dashboard.hotel.users.destroy', $user->id) }}" method="POST"
                                                 onsubmit="return confirm('Are you sure you want to delete this user?');">
                                                 @csrf
                                                 @method('DELETE')

@@ -4,10 +4,16 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Constants\AppConstants;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HotelUser\CreateHotelUserRequest;
+use App\Http\Requests\HotelUser\UpdateHotelUserRequest;
+use App\Mail\SendUserLoginDetailsMail;
+use App\Models\Hotel;
 use App\Models\User;
 use App\Services\User\RegistrationService;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+
 
 class UserManagementController extends Controller
 {
@@ -16,9 +22,13 @@ class UserManagementController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        $hotel = auth()->user()->hotel;
+        $users = $hotel->where('id', $hotel->id);
+        $users = auth()->user()->users;
+        // dd($users);
         return view('dashboard.user-management.index', [
             'users' => $users,
+            'hotel' => $hotel,
         ]);
     }
 
@@ -36,15 +46,21 @@ class UserManagementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateHotelUserRequest $request)
     {
-        // dd($request->all());
-        try {
-            (new RegistrationService)->createUser($request,);
-            return redirect()->route('dashboard.users.index')->with('success_message', 'User Created Successfully');
-        } catch (Exception $e) {
-            return redirect()->back()->with('error_message', 'An error occurred while creating the user.' . $e->getMessage());
-        }
+        $user = User::create($request->all());
+        $password = $user->password;
+        Mail::to($user->email)->send(new SendUserLoginDetailsMail($user, $password));
+        return redirect()->route('dashboard.hotel.users.index')->with('success_message', 'User Created Successfully');
+        
+
+
+        // try {
+        //     (new RegistrationService)->createUser($request);
+        //     return redirect()->route('dashboard.users.index')->with('success_message', 'User Created Successfully');
+        // } catch (Exception $e) {
+        //     return redirect()->back()->with('error_message', 'An error occurred while creating the user.' . $e->getMessage());
+        // }
     }
 
     /**
@@ -71,15 +87,18 @@ class UserManagementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateHotelUserRequest $request, string $id)
     {
-        //  dd($request->all());
-        try {
-            (new RegistrationService)->updateUser($request, $id);
-            return redirect()->route('dashboard.users.index')->with('success_message', 'User Updated Successfully');
-        } catch (Exception $e) {
-            return redirect()->back()->with('error_message', 'An error occurred while updating the user.' . $e->getMessage());
-        }
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('dashboard.hotel.users.index')->with('success_message', 'User updated Successfully');
+        
+        // try {
+        //     (new RegistrationService)->updateUser($request, $id);
+        //     return redirect()->route('dashboard.users.index')->with('success_message', 'User Updated Successfully');
+        // } catch (Exception $e) {
+        //     return redirect()->back()->with('error_message', 'An error occurred while updating the user.' . $e->getMessage());
+        // }
     }
 
     /**

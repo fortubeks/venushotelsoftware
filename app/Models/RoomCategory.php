@@ -9,7 +9,8 @@ class RoomCategory extends Model
 {
     use HasFactory;
     protected $fillable = ['hotel_id','name','description','rate','discounted_rate','image'];
+    
     public function rooms(){
-        return $this->hasMany(Room::class);
+        return $this->hasMany(Room::class, 'hotel_id');
     }
 }

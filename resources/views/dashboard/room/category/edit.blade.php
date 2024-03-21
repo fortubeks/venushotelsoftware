@@ -32,12 +32,12 @@
                 <div class="card">
                     <div class="card-body p-4">
                         @include('notifications.flash-messages')
-                        <form action="{{route('dashboard.hotel.room-category.store')}}" method="POST">
-                            @csrf 
+                        <form action="{{route('dashboard.hotel.room-category.update', $room_category->id)}}" method="POST">
+                            @csrf @method('PUT')
                             <div class="row">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <label for="input1" class="form-label">Name</label>
-                                    <input type="text" name="name" required value="{{ old('name') }}"
+                                    <input type="text" name="name" required value="{{ old('name', $room_category->name) }}"
                                         class="form-control @error('name') is-invalid @enderror" id="input1"
                                         placeholder="Name">
                                     @error('name')
@@ -49,7 +49,7 @@
                                
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <label for="input1" class="form-label">Rate</label>
-                                    <input type="number" name="rate" required value="{{ old('rate') }}"
+                                    <input type="number" name="rate" required value="{{ old('rate', $room_category->rate) }}"
                                         class="form-control @error('name') is-invalid @enderror" id="input1"
                                         placeholder="Rate">
                                     @error('rate')

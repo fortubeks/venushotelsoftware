@@ -9,4 +9,9 @@ class Hotel extends Model
 {
     use HasFactory;
     protected $fillable = ['user_id','name','number_of_rooms','phone','website','logo','address','country_id','state_id'];
+
+    public function category(){
+      return $this->belongsTo(RoomCategory::class);
+    }
 }
+

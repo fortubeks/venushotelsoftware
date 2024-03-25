@@ -62,9 +62,9 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                </div>
-                            @enderror
-                    </div>
+                                @enderror
+                            </div>
+                    
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <label for="input4" class="form-label">Email</label>
                         <input type="email" name="email" required value="{{ old('email') }}"
@@ -104,7 +104,25 @@
                         @enderror
                     </div>
 
-                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 ">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <label for="input4" class="form-label">Role</label>
+                        <select name="status" id="status" required
+                            class="form-control @error('status') is-invalid @enderror">
+                            <option value="">Select Status</option>
+                            @foreach (['active', 'inactive'] as $status)
+                                <option value="{{ $status }}" {{ $status == $status ? 'selected' : '' }}>
+                                    {{ $status }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
                         <label for="input4" class="form-label">Address</label>
                         <input type="text" name="address" value="{{ old('address') }}"
                             class="form-control @error('address') is-invalid @enderror" id="input4">
@@ -124,7 +142,7 @@
                             </span>
                         @enderror
                     </div>
-                    
+
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 pt-3">
                         <button class="btn btn-primary">Save</button>
                     </div>

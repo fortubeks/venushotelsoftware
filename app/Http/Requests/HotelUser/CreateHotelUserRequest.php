@@ -30,7 +30,6 @@ class CreateHotelUserRequest extends FormRequest
             'photo' => 'nullable|max:2048',
             'address' => 'nullable|string|max:255',
             'password' => 'required|string|min:8',
-            'status' => 'enum:users,status',
         ];
     }
 }

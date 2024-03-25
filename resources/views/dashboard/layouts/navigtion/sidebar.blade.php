@@ -34,7 +34,7 @@
                 <div class="menu-title">User Management</div>
             </a>
             <ul>
-                <li> <a href="{{route('dashboard.hotel.users.index')}}"><i class='bx bx-radio-circle'></i>Create</a>
+                <li> <a href="{{route('dashboard.hotel.users.create')}}"><i class='bx bx-radio-circle'></i>Create</a>
                 </li>
                 <li> <a href="{{route('dashboard.hotel.users.index')}}"><i class='bx bx-radio-circle'></i>View</a>
                 </li>

@@ -74,7 +74,7 @@ class RoomController extends Controller
         $room = Room::findOrFail($id);
         return view('dashboard.room.edit', [
             'room' => $room,
-            'roomCategories' => $roomCategories,
+            'roomCategories' => $roomCategories,        
         ]);
     }
 

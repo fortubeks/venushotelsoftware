@@ -57,7 +57,7 @@
                                             {{ $category->name }}
                                         </option>
                                     @endforeach
-                                </select>
+                                </select>   
                                     @error('room_category_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

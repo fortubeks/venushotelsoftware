@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\Hotel\GuestController;
+use App\Http\Controllers\Dashboard\Hotel\Room\ReservationController;
 use App\Http\Controllers\Dashboard\Hotel\Room\RoomCategoryController;
 use App\Http\Controllers\Dashboard\Hotel\Room\RoomController;
 use App\Http\Controllers\Dashboard\UserManagementController;
@@ -19,6 +21,10 @@ Route::prefix('dashboard')->as('dashboard.')->middleware(['auth', 'verified'])->
         Route::resource('users', UserManagementController::class);
         Route::resource('room', RoomController::class);
         Route::resource('room-category', RoomCategoryController::class);
+        Route::resource('reservation', ReservationController::class);
+        Route::resource('guest', GuestController::class);
+        Route::patch('/guests/{id}/restore', [GuestController::class, 'restore'])->name('guests.restore');
+        
     });
 
     Route::post('/send-user-login-details/{userId}', [UserManagementController::class, 'loginDetails'])->name('send-user-login-details');

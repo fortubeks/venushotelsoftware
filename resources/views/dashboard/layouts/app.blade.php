@@ -12,6 +12,7 @@
     <link href="/dashboard/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="/dashboard/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="/dashboard/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet" />
     <!-- loader-->
     <link href="/dashboard/assets/css/pace.min.css" rel="stylesheet" />
     <script src="/dashboard/assets/js/pace.min.js"></script>
@@ -49,9 +50,12 @@
     </div>
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
     <!-- Bootstrap JS -->
     <script src="/dashboard/assets/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
+    
     <script src="/dashboard/assets/js/jquery.min.js"></script>
     <script src="/dashboard/assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="/dashboard/assets/plugins/metismenu/js/metisMenu.min.js"></script>
@@ -65,6 +69,7 @@
     <script>
         new PerfectScrollbar(".app-container")
     </script>
+  
 </body>
 
 </html>

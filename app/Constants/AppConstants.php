@@ -6,14 +6,16 @@ use App\Constants\Finance\TransactionConstants;
 
 class AppConstants
 {
-    const SUDO_EMAIL = "sudo@hotel.com";
     
-
-    const MAX_PROFILE_PIC_SIZE = 2048;
-
     const MALE = 'Male';
     const FEMALE = 'Female';
     const OTHERS = 'Others';
+
+    // Titles
+
+    const Mr = 'Mr';
+    const Mrs = 'Mrs';
+    const Miss = 'Others';
 
   
     const DEFAULT_PASSWORD = "123456";

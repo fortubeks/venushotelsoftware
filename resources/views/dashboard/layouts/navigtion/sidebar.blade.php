@@ -53,6 +53,29 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Reservation</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('dashboard.hotel.reservation.create')}}"><i class='bx bx-radio-circle'></i>Create</a>
+                </li>
+
+                <li> <a href="{{route('dashboard.hotel.room-category.index')}}"><i class='bx bx-radio-circle'></i>View</a>
+                </li>
+                
+            </ul>
+        </li>
+        <li>
+            <a href="{{route('dashboard.hotel.guest.index')}}" class="">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Manage Guests</div>
+            </a>
+           
+        </li>
         <li class="menu-label">UI Elements</li>
         <li>
             <a href="widgets.html">

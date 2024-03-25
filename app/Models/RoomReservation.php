@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RoomReservation extends Model
 {
     use HasFactory;
-    protected $fillable = ['guest_id','room_id','user_id','hotel_id','rate','checkin_date','checkout_date'];
+    protected $fillable = ['guest_id','room_id','user_id','hotel_id','rate','checkin_date','checkout_date', 'total_amount'];
 
     public function room(){
         return $this->belongsTo(Room::class);

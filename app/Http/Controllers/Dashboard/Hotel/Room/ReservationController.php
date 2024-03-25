@@ -25,7 +25,11 @@ class ReservationController extends Controller
     public function create()
     {
         $rooms = Room::all();
-        return view('dashboard.room-reservation.create', compact('rooms'));
+        $guests = Guest::all();
+        return view('dashboard.room-reservation.create', [
+            'rooms' => $rooms,
+            'guests' => $guests,
+        ]);
     }
 
     /**

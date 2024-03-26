@@ -21,9 +21,9 @@
                     </ol>
                 </nav>
             </div>
-            {{-- <div class="ms-auto">
+            <div class="ms-auto">
                 <a href="{{ route('dashboard.hotel.guest.create') }}" class="btn btn-dark">Add New</a>
-            </div> --}}
+            </div>
         </div>
         <!--end breadcrumb-->
 

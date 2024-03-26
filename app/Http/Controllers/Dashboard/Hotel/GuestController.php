@@ -23,15 +23,17 @@ class GuestController extends Controller
      */
     public function create()
     {
-        //
+       return view('dashboard.guest.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Guest $guest)
     {
-        //
+        $request->merge(['hotel_id' => auth()->user()->hotel_id, 'user_id' => auth()->user()->id]);
+        $guest->create($request->all());
+        return redirect()->route('dashboard.hotel.guest.index')->with('success_message', 'Guest Created Successfully');
     }
 
     /**

@@ -100,7 +100,7 @@
 
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <label for="input1" class="form-label">Description</label>
-                                    <textarea name="description" class="form-control @error('name') is-invalid @enderror" required name="description"
+                                    <textarea name="description" class="form-control @error('name') is-invalid @enderror" name="description"
                                         id="" cols="30" rows="10">{{ $room->description }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">

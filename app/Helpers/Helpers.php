@@ -100,3 +100,18 @@ function getBanksList(){
 function hotelId(){
   return auth()->user()->hotel->id;
 }
+
+function removeUnderscore($string)
+{
+  return str_replace('_', ' ', $string);
+}
+
+function removeUnderscoreAndCapitalise($string)
+{
+  return ucwords(str_replace('_', ' ', $string));
+}
+
+function Capitalise($string)
+{
+  return ucwords($string);
+}

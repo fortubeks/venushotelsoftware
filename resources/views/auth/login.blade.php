@@ -72,7 +72,7 @@
         rel="stylesheet">
     <link href="../dashboard/assets/css/app.css" rel="stylesheet">
     <link href="../dashboard/assets/css/icons.css" rel="stylesheet">
-    <title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+    <title>Venushotelsoftware - Login To Your Account</title>
 </head>
 
 <body class="">
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="text-center mb-4">
                                         @include('notifications.flash-messages')
-                                        <h5 class="">Rocker Admin</h5>
+                                        <h5 class="">Venushotelsoftware</h5>
                                         <p class="mb-0">Please log in to your account</p>
                                     </div>
                                     <div class="form-body">
@@ -157,17 +157,9 @@
                                     </div>
                                     <div class="list-inline contacts-social text-center">
                                         <a href="javascript:;"
-                                            class="list-inline-item bg-facebook text-white border-0 rounded-3"><i
-                                                class="bx bxl-facebook"></i></a>
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-twitter text-white border-0 rounded-3"><i
-                                                class="bx bxl-twitter"></i></a>
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-google text-white border-0 rounded-3"><i
+                                            class="list-inline-item bg-google w-100 text-white border-0 rounded-3"><i
                                                 class="bx bxl-google"></i></a>
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-linkedin text-white border-0 rounded-3"><i
-                                                class="bx bxl-linkedin"></i></a>
+                                      
                                     </div>
 
                                 </div>

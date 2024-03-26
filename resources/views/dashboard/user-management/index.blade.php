@@ -40,32 +40,30 @@
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
                                 <th>Photo</th>
+                                <th>Name</th>
                                 <th>email</th>
+                                <th>Phone Number</th>
                                 <th>Role</th>
                                 <th>Status</th>
-                                <th>Created Date</th>
+                                <th>Last Login</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        @if($users->count())
                         <tbody>
-
                             @foreach ($users as $user)
-                                @php
-                                    $userStatus = $user->status;
-                                    $userStatusColor = '';
-                                    if ($userStatus == 'active') {
-                                        $userStatusColor = 'text-success';
-                                    }
-                                    if ($userStatus == 'inactive') {
-                                        $userStatusColor = 'text-danger';
-                                    }
-                                @endphp
+                            @php
+                                $userStatus = $user->status;
+                                $userStatusColor = '';
+                                if ($userStatus == 'active') {
+                                    $userStatusColor = 'text-success';
+                                }
+                                if ($userStatus == 'inactive') {
+                                    $userStatusColor = 'text-danger';
+                                }
+                            @endphp
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->first_name }}</td>
                                     <td>
                                         @if (!empty($user->photo))
                                             <img class="img-fluid user-photo "
@@ -77,9 +75,12 @@
                                                 alt="">
                                         @endif
                                     </td>
+                                    <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td class="{{ $userStatusColor }}">{{ $user->status }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{{ removeUnderscore($user->role) }}</td>
+                                    <td class="{{ $userStatusColor }}">{{removeUnderscoreAndCapitalise($user->status 
+                                    )}}</td>
                                     <td>{{ $user->created_at->format('D M, Y') }}</td>
                                     <td>
                                         <div class="d-flex justify-content-space ">
@@ -91,8 +92,14 @@
                                     </td>
                                 </tr>
                             @endforeach
-
-                            </tfoot>
+                        </tbody>
+                        @else
+                        <tbody>
+                            <tr>
+                                <td colspan="7"><h4>No Available Users</h4></td>
+                            </tr>
+                        </tbody>
+                        @endif
                     </table>
                 </div>
             </div>

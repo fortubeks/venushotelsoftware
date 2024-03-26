@@ -32,8 +32,8 @@
                 <div class="card">
                     <div class="card-body p-4">
                         @include('notifications.flash-messages')
-                        <form action="{{ route('dashboard.hotel.guest.update', $guest->id) }}" method="POST">
-                            @csrf @method('PUT')
+                        <form action="{{ route('dashboard.hotel.guest.store') }}" method="POST">
+                            @csrf 
                            
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">First Name</label>
-                                    <input type="text" name="first_name" required value="{{ old('first_name', $guest->first_name) }}"
+                                    <input type="text" name="first_name" required value="{{ old('first_name') }}"
                                         class="form-control @error('first_name') is-invalid @enderror" id="input1"
                                         placeholder="First Name">
                                     @error('first_name')
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">Last Name</label>
-                                    <input type="text" name="last_name" value="{{ old('last_name', $guest->last_name) }}"
+                                    <input type="text" name="last_name" value="{{ old('last_name') }}"
                                         class="form-control @error('last_name') is-invalid @enderror" id="input1"
                                         placeholder="Last Name">
                                     @error('last_name')
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">Other Name</label>
-                                    <input type="text" name="other_name" value="{{ old('other_name', $guest->other_names) }}"
+                                    <input type="text" name="other_name" value="{{ old('other_name') }}"
                                         class="form-control @error('other_name') is-invalid @enderror" id="input1"
                                         placeholder="Other Name">
                                     @error('other_name')
@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">Email</label>
-                                    <input type="email" name="email" value="{{ old('email', $guest->email) }}"
+                                    <input type="email" name="email" value="{{ old('email') }}"
                                         class="form-control @error('email') is-invalid @enderror" id="input1"
                                         placeholder="Email">
                                     @error('first')
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">Phone</label>
-                                    <input type="text" name="phone" value="{{ old('phone', $guest->phone) }}"
+                                    <input type="text" name="phone" value="{{ old('phone') }}"
                                         class="form-control @error('phone') is-invalid @enderror" id="input1"
                                         placeholder="Phone">
                                     @error('phone')
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">City</label>
-                                    <input type="text" name="city" required value="{{ old('city', $guest->city) }}"
+                                    <input type="text" name="city" required value="{{ old('city') }}"
                                         class="form-control @error('city') is-invalid @enderror" id="input1"
                                         placeholder="City">
                                     @error('city')
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">Country</label>
-                                    <input type="text" name="country" required value="{{ old('country', $guest->country) }}"
+                                    <input type="text" name="country" required value="{{ old('country') }}"
                                         class="form-control @error('country') is-invalid @enderror" id="input1"
                                         placeholder="Country">
                                     @error('country')
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 pb-3">
                                     <label for="input1" class="form-label">Address</label>
-                                    <input type="text" name="address" value="{{ old('address', $guest->address) }}"
+                                    <input type="text" name="address" value="{{ old('address') }}"
                                         class="form-control @error('address') is-invalid @enderror" id="input1"
                                         placeholder="Address">
                                     @error('address')

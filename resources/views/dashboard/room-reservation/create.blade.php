@@ -44,7 +44,7 @@
                                         @foreach (getModelList('guests') as $guest)
                                             <option value="{{ $guest->full_name }}" data-value="{{ $guest->id }}">
                                         @endforeach
-
+                                                
                                     </datalist>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">

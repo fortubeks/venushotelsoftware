@@ -14,9 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        $this->call(HotelRoomCategorySeeder::class);
-         Hotel::factory(10)->create();
+        // User::factory(10)->create();
+        // $this->call(HotelRoomCategorySeeder::class);
+        //  Hotel::factory(10)->create();
+        $this->call(StateSeeder::class);
+        $this->call(CountrySeeder::class);
        
 
 

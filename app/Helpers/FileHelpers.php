@@ -16,7 +16,7 @@ class FileHelpers
     }
 
     // Generate a unique file name
-    $file_name = uniqid() . '_' . $file->getClientOriginalName();
+    $file_name = basename($file->getClientOriginalName());
 
     // Store the file in the specified directory within the storage folder
     Storage::disk('public')->put($directory . '/' . $file_name, file_get_contents($file));

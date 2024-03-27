@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <label for="input4" class="form-label">Role</label>
+                        <label for="input4" class="form-label">Satus</label>
                         <select name="status" id="status" required
                             class="form-control @error('status') is-invalid @enderror">
                             <option value="">Select Status</option>

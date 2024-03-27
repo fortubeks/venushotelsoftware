@@ -52,6 +52,14 @@
             </a>
            
         </li>
+        <li>
+            <a href="{{route('dashboard.hotel.venue.index')}}" class="">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Venue(s)</div>
+            </a>
+           
+        </li>
        
     </ul>
     <!--end navigation-->

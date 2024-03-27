@@ -76,8 +76,8 @@ class StatusConstants
     const SELL = 'Sell';
 
     const ACTIVE_OPTIONS = [
-        self::ACTIVE => 'Active',
-        self::INACTIVE => 'Inactive',
+        1 => 'Active',
+        0 => 'Inactive',
     ];
 
     const STOCK_OPTIONS = [

@@ -20,8 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
         'email',
         'phone',
         'photo',
@@ -72,12 +71,11 @@ class User extends Authenticatable
         static::created(function ($model) {
             // Perform your function or action here
             // You can access the model's attributes using $model->attribute_name
-            if($model->role == "Super_User"){
-               $hotel = Hotel::create(['user_id' => $model->id]);
-               $model->hotel_id = $hotel->id;
-               $model->save();
+            if ($model->role == "Super_User") {
+                $hotel = Hotel::create(['user_id' => $model->id]);
+                $model->hotel_id = $hotel->id;
+                $model->save();
             }
-
         });
     }
 
@@ -89,10 +87,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Hotel');
     }
-    public function userAccount(){
+    public function userAccount()
+    {
         return $this->hasOne('App\Models\User', 'user_account_id');
     }
-    public function users(){
+    public function users()
+    {
         return $this->hasMany('App\Models\User', 'user_account_id');
     }
 
@@ -100,5 +100,4 @@ class User extends Authenticatable
     {
         return $this->first_name . ' ' . $this->last_name;
     }
-
 }

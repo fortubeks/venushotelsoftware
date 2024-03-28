@@ -27,8 +27,7 @@ class UserFactory extends Factory
     {
         return [
             'user_account_id' => '1',
-            'first_name' => fake()->name(),
-            'last_name' => fake()->name(),
+            'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'role' => array_rand( AppConstants::ROLE_OPTIONS),
             'email_verified_at' => now(),
@@ -36,7 +35,7 @@ class UserFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'hotel_id' => 1,
-            'status' => 'active',
+            'status' => true,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

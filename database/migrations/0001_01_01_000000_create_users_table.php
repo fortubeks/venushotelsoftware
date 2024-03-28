@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -22,7 +21,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->text('address')->nullable();
             $table->string('role')-> default(('super_user'));
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->boolean('status')->default(true);
             $table->foreignId('hotel_id')->nullable();
             $table->rememberToken();
             $table->softDeletes();

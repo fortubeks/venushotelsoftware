@@ -33,29 +33,18 @@
 
 
                             <div class="col-md-6">
-                                <label for="input1" class="form-label">First Name</label>
-                                <input type="text" name="first_name" required
-                                    value="{{ old('first_name', $user->first_name) }}"
-                                    class="form-control @error('first_name') is-invalid @enderror" id="input1"
-                                    placeholder="First Name">
-                                @error('first_name')
+                                <label for="input1" class="form-label">Full Name</label>
+                                <input type="text" name="name" required
+                                    value="{{ old('name', $user->name) }}"
+                                    class="form-control @error('name') is-invalid @enderror" id="input1"
+                                    placeholder="Full Name">
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <label for="input2" class="form-label">Last Name</label>
-                                <input type="text" name="last_name" required
-                                    value="{{ old('last_name', $user->last_name) }}"
-                                    class="form-control @error('last_name') is-invalid @enderror" id="input2"
-                                    placeholder="Last Name">
-                                @error('last_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                          
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                 <label for="input3" class="form-label">Phone</label>
                                 <input type="phone" name="phone" value="{{ old('phone', $user->phone) }}"
@@ -113,12 +102,12 @@
                                 <select name="status" id="status" required
                                     class="form-control @error('status') is-invalid @enderror">
                                     <option value="">Select Status</option>
-                                    @foreach (['active', 'inactive'] as $status)
-                                        <option value="{{ $status }}"
-                                            {{ $user->status == $status ? 'selected' : '' }}>
-                                            {{ $status }}
-                                        </option>
-                                    @endforeach
+                                    @foreach ($statusOptions as $key => $status)
+                                    <option value="{{ $key }}"
+                                        {{ $user->status == $key ? 'Selected' : '' }}>
+                                        {{ $status }}
+                                    </option>
+                                @endforeach
                                 </select>
                                 @error('status')
                                     <span class="invalid-feedback" role="alert">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Constants\AppConstants;
+use App\Constants\StatusConstants;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HotelUser\CreateHotelUserRequest;
 use App\Http\Requests\HotelUser\UpdateHotelUserRequest;
@@ -40,6 +41,7 @@ class UserManagementController extends Controller
         $roles = AppConstants::ROLE_OPTIONS;
         return view('dashboard.user-management.create', [
             'roles' => $roles,
+            'statusOptions' => StatusConstants::ACTIVE_OPTIONS,
         ]);
     }
 
@@ -81,6 +83,7 @@ class UserManagementController extends Controller
         return view('dashboard.user-management.edit', [
             'user' => $user,
             'roles' => $roles,
+            'statusOptions' => StatusConstants::ACTIVE_OPTIONS,
         ]);
     }
 

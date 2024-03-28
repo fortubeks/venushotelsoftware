@@ -11,18 +11,15 @@ class FileHelpers
     public static function saveImageRequest($file, $directory)
     {
         // Check if the file was uploaded successfully
-    if (!$file->isValid()) {
-        throw new \Exception('File upload failed');
-    }
+        if (!$file->isValid()) {
+            throw new \Exception('File upload failed');
+        }
+        $file_name = basename($file->getClientOriginalName());
 
-    // Generate a unique file name
-    $file_name = basename($file->getClientOriginalName());
-
-    // Store the file in the specified directory within the storage folder
-    Storage::disk('public')->put($directory . '/' . $file_name, file_get_contents($file));
-
-    // Return the path to the saved file
-    return $file_name;
+        $path = Storage::disk('public')->put($directory . '/' . $file_name, file_get_contents($file));
+        
+        return $path;
+       
     }
 
 

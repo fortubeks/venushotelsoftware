@@ -56,10 +56,10 @@
                             @php
                                 $userStatus = $user->status;
                                 $userStatusColor = '';
-                                if ($userStatus == 'active') {
+                                if ($userStatus == '1') {
                                     $userStatusColor = 'text-success';
                                 }
-                                if ($userStatus == 'inactive') {
+                                if ($userStatus == '0') {
                                     $userStatusColor = 'text-danger';
                                 }
                             @endphp
@@ -75,11 +75,11 @@
                                                 alt="">
                                         @endif
                                     </td>
-                                    <td>{{ $user->first_name }}</td>
+                                    <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
                                     <td>{{ removeUnderscore($user->role) }}</td>
-                                    <td class="{{ $userStatusColor }}">{{removeUnderscoreAndCapitalise($user->status 
+                                    <td class="{{ $userStatusColor }}">{{getStatusAsString($user->status 
                                     )}}</td>
                                     <td>{{ $user->created_at->format('D M, Y') }}</td>
                                     <td>

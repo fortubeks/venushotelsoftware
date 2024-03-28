@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FileHelpers;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('dashboard.settings.profile.edit', [
             'user' => $request->user(),
         ]);
     }
@@ -26,16 +27,31 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $user->fill($request->all());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        if ($request->hasFile('photo')) {
+            $allowedfileExtension = ['jpeg', 'jpg', 'png'];
+            $extension = $request->photo->getClientOriginalExtension();
+            $check = in_array($extension, $allowedfileExtension);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+            if ($check) {
+                $path = $request->file('photo')->store('images/profile_images');
+                $user->photo = basename($path);
+            } else {
+                return back()->withErrors(['photo' => 'Invalid file format. Only JPEG, JPG, and PNG files are allowed.']);
+            }
+        }
+
+        $user->save();
+
+        return back()->with('success_message', 'Profile updated successfully');
     }
+
 
     /**
      * Delete the user's account.

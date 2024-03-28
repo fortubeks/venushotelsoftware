@@ -35,7 +35,7 @@
                             <div class="card-body">
                                 <div class="p-4">
                                     <div class="mb-3 text-center">
-                                        <img src="../dashboard/assets/images/logo-icon.png" width="60" alt="" />
+                                        <img src="{{asset('web/venushotel-logo.png')}}" width="60" alt="" />
                                     </div>
                                     <div class="text-center mb-4">
                                         @include('notifications.flash-messages')
@@ -46,12 +46,24 @@
                                         <form action="{{route('register')}}" method="POST" class="row g-3">
                                             @csrf
                                             <div class="col-12">
-                                                <label for="inputUsername" class="form-label">Full Name</label>
-                                                <input type="text" name="name" value="{{old('name')}}" required
+                                                <label for="inputUsername" class="form-label">First Name</label>
+                                                <input type="text" name="first_name" value="{{old('first_name')}}" required
                                                     autocomplete="name"
                                                     class="form-control @error('name') is-invalid @enderror"
-                                                    id="name" placeholder="Enter your full name">
-                                                @error('name')
+                                                    id="first_name" placeholder="Enter your First Name">
+                                                @error('first_name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="inputUsername" class="form-label">Last Name</label>
+                                                <input type="text" name="last_name" value="{{old('last_name')}}" required
+                                                    autocomplete="last_name"
+                                                    class="form-control @error('last_name') is-invalid @enderror"
+                                                    id="last_name" placeholder="Enter your Last Name">
+                                                @error('last_name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>

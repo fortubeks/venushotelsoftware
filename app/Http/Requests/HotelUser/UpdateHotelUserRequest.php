@@ -25,8 +25,7 @@ class UpdateHotelUserRequest extends FormRequest
     {
         $userId = $this->route('id');
         return [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             // 'email' => [
             //     'required',
             //     'string',

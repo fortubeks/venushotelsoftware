@@ -9,19 +9,27 @@ class Purchase extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'supplier_id','category_id','description','purchase_date','amount',
-        'note','hotel_id','status','total_amount'
+        'supplier_id', 'category_id', 'description', 'purchase_date', 'amount',
+        'note', 'hotel_id', 'status', 'total_amount', 'tax_amount', 'tax_rate', 'discount',
     ];
-    public function supplier(){
+    public function supplier()
+    {
         return $this->belongsTo('App\Models\Supplier');
     }
-    public function category(){
-        return $this->belongsTo('App\Models\ExpenseCategory','category_id');
+    public function category()
+    {
+        return $this->belongsTo('App\Models\ExpenseCategory', 'category_id');
     }
-    public function items(){
-        return $this->hasMany('App\Models\PurchaseStoreItem','purchase_id');
+    public function items()
+    {
+        return $this->hasMany('App\Models\PurchaseStoreItem', 'purchase_id');
     }
-    public function status(){
+    public function purchaseCategory()
+    {
+        return $this->belongsTo(PurchaseCategory::class, 'category_id');
+    }
+    public function status()
+    {
         $status = "";
         switch ($this->status) {
             case 1:
@@ -36,7 +44,7 @@ class Purchase extends Model
             case 4:
                 $status = "Pending";
                 break;
-            
+
             default:
                 # code...
                 break;

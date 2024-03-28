@@ -6,6 +6,7 @@ use App\Models\ExpenseCategory;
 use App\Models\ExpenseItem;
 use App\Models\Guest;
 use App\Models\Item;
+use App\Models\PurchaseCategory;
 use App\Models\PurchaseItem;
 use App\Models\Room;
 use App\Models\RoomCategory;
@@ -84,6 +85,9 @@ function getModelList($model)
   }
   if ($model == 'room-categories') {
     $model_list = RoomCategory::where('hotel_id', auth()->user()->hotel_id)->get();
+  }
+  if ($model == 'purchase-categories') {
+    $model_list = PurchaseCategory::where('hotel_id', auth()->user()->hotel_id)->get();
   }
   if ($model == 'rooms') {
     $model_list = Room::where('hotel_id', auth()->user()->hotel_id)->get();

@@ -86,4 +86,9 @@ class Supplier extends Model
         ->select('expense_payments.amount')->distinct()->sum('expense_payments.amount');
         return $payments;
     }
+
+    public function purchase()
+    {
+        return $this->belongsTo(Purchase::class);
+    }
 }

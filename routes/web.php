@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\Hotel\GuestController;
+use App\Http\Controllers\Dashboard\Hotel\Purchases\PurchaseController;
 use App\Http\Controllers\Dashboard\Hotel\Room\ReservationController;
 use App\Http\Controllers\Dashboard\Hotel\Room\RoomCategoryController;
 use App\Http\Controllers\Dashboard\Hotel\Room\RoomController;
@@ -28,6 +29,7 @@ Route::prefix('dashboard')->as('dashboard.')->middleware(['auth', 'verified'])->
         Route::resource('guest', GuestController::class);
         Route::resource('venue', VenueController::class);
         Route::resource('supplier', SuppliersController::class);
+        Route::resource('purchase', PurchaseController::class);
         // Route::patch('/guests/{id}/restore', [GuestController::class, 'restore'])->name('guests.restore');
 
         Route::prefix('settings')->as('settings.')->group(function () {

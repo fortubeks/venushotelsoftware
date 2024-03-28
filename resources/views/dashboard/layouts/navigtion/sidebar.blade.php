@@ -49,6 +49,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('dashboard.hotel.purchase.index') }}" class="">
+                <div class="parent-icon"><i class="bx bx-map"></i></div>
+                <div class="menu-title">Purchase(s)</div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('dashboard.hotel.settings.') }}" class="">
                 <div class="parent-icon"><i class='bx bx-info-circle'></i></div>
                 <div class="menu-title">Settings</div>

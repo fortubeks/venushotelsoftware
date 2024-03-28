@@ -20,6 +20,10 @@ class StatusConstants
 
     const SUSPENDED = 'Suspended';
 
+    const PARTIAL = 'Partial';
+
+    const ORDERED = 'Ordered';
+
     const PENDING = 'Pending';
 
     const COMPLETED = 'Completed';
@@ -90,7 +94,7 @@ class StatusConstants
         0 => 'No',
     ];
 
-   
+
 
     const ERROR_STATUS = [
         self::RESOLVED => 'Resolved',
@@ -107,5 +111,14 @@ class StatusConstants
         self::MODERATOR => 'Moderator',
         self::CUSTOMER => 'Customer',
         self::USER => 'User',
+    ];
+
+
+    const  PURCHASE_STATUS_OPTION = [
+        self::RECEIVED => "Received",
+        self::PARTIAL => "Partial",
+        self::ORDERED => "Ordered",
+        self::PENDING => "Pending",
+        // Add more statuses as needed
     ];
 }

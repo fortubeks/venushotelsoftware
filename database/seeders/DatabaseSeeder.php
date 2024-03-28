@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         $this->call(HotelRoomCategorySeeder::class);
-         Hotel::factory(10)->create();
+        Hotel::factory(10)->create();
+        $this->call(PurchaseCategorySeeder::class);
         $this->call(StateSeeder::class);
         $this->call(CountrySeeder::class);
-       
+
 
 
 

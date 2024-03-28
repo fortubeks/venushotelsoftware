@@ -13,5 +13,9 @@ class Hotel extends Model
     public function category(){
       return $this->belongsTo(RoomCategory::class);
     }
+
+    public function purchaseCategory(){
+      return $this->belongsTo(PurchaseCategory::class);
+    }
 }
 

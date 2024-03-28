@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\Hotel\GuestController;
 use App\Http\Controllers\Dashboard\Hotel\Room\ReservationController;
 use App\Http\Controllers\Dashboard\Hotel\Room\RoomCategoryController;
 use App\Http\Controllers\Dashboard\Hotel\Room\RoomController;
+use App\Http\Controllers\Dashboard\Hotel\SuppliersController;
 use App\Http\Controllers\Dashboard\Hotel\VenueController;
 use App\Http\Controllers\Dashboard\Settings\HotelSettingsController;
 use App\Http\Controllers\Dashboard\UserManagementController;
@@ -26,6 +27,7 @@ Route::prefix('dashboard')->as('dashboard.')->middleware(['auth', 'verified'])->
         Route::resource('reservation', ReservationController::class);
         Route::resource('guest', GuestController::class);
         Route::resource('venue', VenueController::class);
+        Route::resource('supplier', SuppliersController::class);
         // Route::patch('/guests/{id}/restore', [GuestController::class, 'restore'])->name('guests.restore');
 
         Route::prefix('settings')->as('settings.')->group(function () {

@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Supplier extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['hotel_id','name','contact_person_name','contact_person_phone',
-    'bank_account_name','bank_name','bank_sort_code','bank_account_no','email'];
+    'bank_account_name','bank_name','bank_sort_code','bank_account_no','email', 'address'];
 
     public function expenses(){
         return $this->hasMany('App\Models\Expense');

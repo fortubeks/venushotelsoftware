@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('bank_name')->nullable();
             $table->string('bank_account_no')->nullable();
             $table->string('email')->nullable();
-            $table->foreignId('hotel_id');
+            $table->foreignId('hotel_id');  
             $table->softDeletes();
             $table->timestamps();
         });
